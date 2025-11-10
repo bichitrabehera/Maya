@@ -1,1 +1,128 @@
 @import "tailwindcss";
+
+/* ===== Global Resets ===== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background-color: #1a0f08; /* prevents white flash between sections */
+  color-scheme: dark;
+}
+
+/* Prevent scrollbar flash and ensure smoother parallax transitions */
+body {
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===== Animations ===== */
+
+/* Gradient shimmer for backgrounds */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradientFlow {
+  background-size: 200% 200%;
+  animation: gradientFlow 14s ease infinite;
+}
+
+/* Slow breathing pulse (used in Hero & Philosophy glows) */
+@keyframes pulseSlow {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.08);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 7s ease-in-out infinite;
+}
+
+/* Mandala rotation */
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 100s linear infinite;
+}
+
+/* Subtle shimmer for light overlays */
+@keyframes shimmerFlow {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmerFlow 8s ease-in-out infinite;
+}
+
+/* Standard pulse (lighter overlay animations) */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 6s ease-in-out infinite;
+}
+
+/* ===== Utility Enhancements ===== */
+
+/* Prevent text selection flicker during scroll */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: smoother transitions for background & opacity changes */
+.transition-smooth {
+  transition: all 0.6s ease;
+}
+
+/* Optional subtle scroll indicator style (if you add one later) */
+.scroll-indicator {
+  position: fixed;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  height: 2px;
+  width: 100px;
+  background: linear-gradient(to right, #ffd700, #f0c674, #ffd700);
+  background-size: 200% auto;
+  animation: gradientFlow 3s linear infinite;
+  border-radius: 10px;
+}
